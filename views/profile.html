@@ -1,0 +1,126 @@
+<div ng-controller="home">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#!/home">Shopify</a
+      ><button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active">Selling only the best things online</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a href="#!cart"
+      ><img
+        style="height: 30px; margin-right: 10px; cursor: pointer"
+        src="../assets/images/icons8-shopping-cart-50.png"
+        alt="..."
+    /></a>
+    <a href="#!profile"
+      ><img
+        style="height: 30px; margin-right: 10px; cursor: pointer"
+        src="../assets/images/icons8-male-user-24.png"
+        alt="..."
+    /></a>
+    <a ng-click="logout()"
+      ><img
+        style="height: 30px; margin-right: 10px; cursor: pointer"
+        src="../assets/images/icons8-logout-rounded-up-50.png"
+        alt="..."
+    /></a>
+  </nav>
+
+  <div class="profile-div" ng-controller="profile">
+    <div class="profile-inner-div">
+      <div class="profile-left-div">
+        <div class="profile-logo">
+          <img class="p-icon" src="../assets/images/p-icon.png" alt=".." />
+        </div>
+        <div class="website-detail">
+          <h1>Shopify</h1>
+          <h3>Total Orders</h3>
+          <h3>Order Frequency</h3>
+          <h3>Address</h3>
+        </div>
+      </div>
+      <div class="profile-right-div">
+        <div class="user-details">
+          <h1>Details</h1>
+          <h3>Name:- {{currentUserName}}</h3>
+          <h3>Email:- {{currentUserEmail}}</h3>
+          <button ng-click="hideFunction()">Edit details</button>
+        </div>
+        <div class="edit-form" ng-hide="formHide">
+          <form name="myForm" novalidate>
+            <input
+              class="input-element"
+              type="email"
+              id="email"
+              name="email"
+              ng-model="email"
+              required
+              ng-pattern="emailRegex"
+              placeholder="Enter new email"
+            />
+            <br />
+            <label ng-show="myForm.$submitted || myForm.email.$dirty">
+              <label
+                ng-model="emailError1"
+                class="error"
+                ng-show="myForm.email.$error.required"
+                >Email is required</label
+              >
+              <label
+                ng-model="emailError2"
+                class="error"
+                ng-show="myForm.email.$error.pattern"
+                >Email is not valid</label
+              >
+            </label>
+            <br />
+
+            <input
+              class="input-element"
+              type="text"
+              name="name"
+              id="name"
+              ng-model="name"
+              required
+              placeholder="Enter new name"
+            />
+            <br />
+            <label ng-show="myForm.$submitted || myForm.name.$dirty">
+              <span
+                ng-model="nameError"
+                class="error"
+                ng-show="myForm.name.$error.required"
+                >Name is required</span
+              ><br />
+            </label>
+            <br />
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              ng-disabled="myForm.$invalid"
+              ng-click="updateDetail()"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

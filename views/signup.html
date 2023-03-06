@@ -1,0 +1,188 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#!/home">Shopify</a
+    ><button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="#!">Signup</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#!login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="inner_div" ng-controller="signup">
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="../assets/images/ecommerce-photo.jpg"
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1>Signup</h1>
+          <form name="myForm" novalidate>
+            <input
+              class="input-element"
+              type="email"
+              id="email"
+              name="email"
+              ng-model="email"
+              required
+              ng-pattern="emailRegex"
+              placeholder="Enter email"
+            />
+            <br />
+            <label ng-show="myForm.$submitted || myForm.email.$dirty">
+              <label
+                ng-model="emailError1"
+                class="error"
+                ng-show="myForm.email.$error.required"
+                >Email is required</label
+              >
+              <label
+                ng-model="emailError2"
+                class="error"
+                ng-show="myForm.email.$error.pattern"
+                >Email is not valid</label
+              >
+            </label>
+            <br />
+
+            <input
+              class="input-element"
+              type="text"
+              name="name"
+              id="name"
+              ng-model="name"
+              required
+              placeholder="Enter name"
+            />
+            <br />
+            <label ng-show="myForm.$submitted || myForm.name.$dirty">
+              <span
+                ng-model="nameError"
+                class="error"
+                ng-show="myForm.name.$error.required"
+                >Name is required</span
+              ><br />
+            </label>
+            <br />
+
+            <input
+              class="input-element"
+              type="text"
+              id="phoneNumber"
+              name="phoneNumber"
+              ng-model="phoneNumber"
+              ng-minlength="10"
+              ng-maxlength="10"
+              required
+              placeholder="Enter phone number"
+            />
+            <br />
+            <label ng-show="myForm.$submitted || myForm.phoneNumber.$dirty">
+              <label
+                ng-model="phoneError1"
+                class="error"
+                ng-show="myForm.phoneNumber.$error.required"
+                >Phone Number is required</label
+              >
+              <label
+                ng-model="phoneError2"
+                class="error"
+                ng-show="((myForm.phoneNumber.$error.minlength || myForm.phoneNumber.$error.maxlength) && myForm.phoneNumber.$dirty)"
+                >Phone Number should be of 10 digits</label
+              >
+            </label>
+            <br />
+
+            <input
+              class="input-element"
+              type="password"
+              id="password"
+              name="password"
+              ng-model="password"
+              ng-minlength="7"
+              ng-maxlength="7"
+              ng-pattern="passwordRegex"
+              required
+              placeholder="confirm passsword"
+            />
+            <br />
+            <label ng-show="myForm.$submitted || myForm.password.$dirty">
+              <span
+                ng-model="passsError1"
+                class="error"
+                ng-show="myForm.password.$error.required"
+                >Password is required</span
+              >
+              <label
+                ng-model="passError4"
+                class="error"
+                ng-show="((myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$dirty)"
+                >Password length should be atleast 7</label
+              >
+            </label>
+            <br />
+
+            <input
+              class="input-element"
+              type="password"
+              id="password1"
+              name="password1"
+              ng-model="password1"
+              required
+              ng-keyup="compare(password1)"
+              placeholder="confirm passsword"
+            />
+            <br />
+            <label ng-show="myForm.$submitted || myForm.password1.$dirty">
+              <span
+                ng-model="passError2"
+                class="error"
+                ng-show="myForm.password1.$error.required"
+                >Password is required</span
+              >
+              <span
+                ng-model="passError3"
+                ng-class="{true:'green',false:'red'}[isconfirm]"
+                >Password {{isconfirm==true?'':'not'}} match</span
+              >
+            </label>
+            <br />
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              ng-disabled="(myForm.$invalid || isPasswordMatch)"
+              ng-click="signupSubmit()"
+            >
+              Submit
+            </button>
+            <p>
+              Already have an account!
+              <a class="redirect-link" href="#!login">login here</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

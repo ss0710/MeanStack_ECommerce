@@ -1,0 +1,74 @@
+<div ng-controller="cart">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#!/home">Shopify</a
+      ><button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active">Selling only the best things online</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a href="#!cart"
+      ><img
+        style="height: 30px; margin-right: 10px; cursor: pointer"
+        src="../assets/images/icons8-shopping-cart-50.png"
+        alt="..."
+    /></a>
+    <a href="#!profile"
+      ><img
+        style="height: 30px; margin-right: 10px; cursor: pointer"
+        src="../assets/images/icons8-male-user-24.png"
+        alt="..."
+    /></a>
+    <a ng-click="logout()"
+      ><img
+        style="height: 30px; margin-right: 10px; cursor: pointer"
+        src="../assets/images/icons8-logout-rounded-up-50.png"
+        alt="..."
+    /></a>
+  </nav>
+
+  <div id="prod-div">
+    <div class="cart-count">
+      <h3>Total items in cart:- {{itemsCount}}</h3>
+      <h3>Total amount:- {{ totalAmount | number:'2' }} Rs</h3>
+    </div>
+    <ul>
+      <li ng-repeat="item in cartItems">
+        <div class="product-div">
+          <div class="proct-img-div">
+            <img class="product-img" src="{{item.img}}" alt="..." />
+          </div>
+          <div className="product-content-div">
+            <h5>{{item.title.substring(0, 15)}}</h5>
+            <p>{{item.category}}</p>
+            <p>{{item.price}}</p>
+            <div class="button-div">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                class="addToCartButton"
+                ng-click="removeFromCart(item.title.substring(0, 15))"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

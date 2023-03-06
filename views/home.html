@@ -1,0 +1,103 @@
+<div ng-controller="home">
+<nav  class="navbar navbar-expand-lg navbar-dark bg-primary" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#!/home">Shopify</a
+    ><button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active">Selling only the best things online</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <a href="#!cart"><img style="height:30px; margin-right: 10px; cursor: pointer;" src="../assets/images/icons8-shopping-cart-50.png" alt="..."/></a>
+  <a href="#!profile"><img style="height:30px; margin-right: 10px; cursor: pointer;" src="../assets/images/icons8-male-user-24.png" alt="..."/></a>
+  <a ng-click="logout()"><img style="height:30px; margin-right: 10px; cursor: pointer;" src="../assets/images/icons8-logout-rounded-up-50.png" alt="..."/></a>
+</nav>
+
+<div>
+<div class="landing-page" >
+  <div class="loanding-page-inner-div">
+    <div class="left-div">
+      <div>
+        <h1>Discover Products for a life well lived</h1>
+        <h3>Join the list and get 15% off your first purchase</h3>
+        <button class="first-button">Products</button>
+        <button class="second-button">view cart</button>
+      </div>
+    </div>
+    <div class="right-div">
+      <img
+        class="landingImg"
+        src="https://img.freepik.com/free-vector/ecommerce-campaign-concept-illustration_114360-8432.jpg?w=2000"
+        alt="..."
+      />
+    </div>
+  </div>
+</div>
+
+<div class="profile-details">
+    <div class="profile-inner-div">
+        <div class="profile">
+            <div class="profile-logo">
+                <img class="profile-png" src="../assets/images/profile.png" alt="logo"/>
+            </div>
+            <div class="profile-edit">
+                <p>{{currentUserName}}</p>
+                <p>{{currentUserEmail}}</p>
+                <a class="edit-profile-button" href="#!profile"><button>Edit Profile</button></a>
+            </div>
+        </div>
+        <div class="cart">
+            <div>
+                <img class="cart-png" src="../assets/images/cart-png.png" alt="art-logo"/>
+            </div>
+            <p>Total Items in Cart</p>
+            <a href="#!cart"><button>View Cart</button></a>
+        </div>
+    </div>
+</div>
+
+<div class="sort-option">
+  <div class="sort-left">
+    <p>Order by price</p>
+  </div>
+  <div class="sort-right">
+    <button ng-click="order1()">Low - High</button>
+    <button ng-click="order2()">High - Low</button>
+  </div>
+</div>
+<div id="prod-div">
+<ul>
+  <li ng-repeat="item in productArr | orderBy:'price':orderBool">
+    <div class="product-div">
+      <div class="proct-img-div">
+        <img class="product-img" src={{item.image}} alt="..." />
+      </div>
+      <div className="product-content-div">
+        <h5>{{item.title.substring(0, 15)}}</h5>
+        <p>{{item.category}}</p>
+        <p>{{item.price}}</p>
+        <div class="button-div">
+          <button type="submit" class="btn btn-primary" class="addToCartButton" ng-click="addToCart(item.title.substring(0, 15), item.image, item.category, item.price)">
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </li>
+</div>
+</ul>
+</div>
+</div>
